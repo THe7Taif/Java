@@ -1,4 +1,4 @@
-public class T1_2 {
+public class Task_1_1_2 {
     public static void main(String[] args) {
         System.out.println(
                 "    *\n" +
