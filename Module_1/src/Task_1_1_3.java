@@ -19,8 +19,8 @@ public class Task_1_1_3 {
         double average = (first + second + third) / 3.0; // we should remember always that when we use var type division (double is 3.0 not 3) (int is 3 not 3.0 ...)
                                                         // that we should change the data in var to be as the same type of the var we call.
 
-        System.out.println("The sum of the numbers is: " + sum
-                        + " and the product is: " + product
-                        + " and the average is: " + average);
+        System.out.println("Sum: " + sum);
+        System.out.println("Product: " + product);
+        System.out.println("Average: " + average);
     }
 }

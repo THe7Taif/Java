@@ -20,7 +20,7 @@ public class Task_1_1_4 {
         Task_1_1_4 cat = new Task_1_1_4("Whiskers");
         Task_1_1_4 cat_2 = new Task_1_1_4("Rex");
 
-        for (int i =0; i < 1; i++) {
+        for (int i = 0; i < 1; i++) {
             cat.meow();
         }
 
