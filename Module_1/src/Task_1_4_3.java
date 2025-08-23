@@ -63,7 +63,6 @@ public class Task_1_4_3 {
         for (int i = 0; i < uniqueCount; i++) {
             System.out.print(uniqueNumbers[i] + " ");
         }
-
         input.close();
     }
 }
