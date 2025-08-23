@@ -1,7 +1,4 @@
-/* Task 2: Modified Car class
-
-    Modify Car class so that it has an additional constructor with gasoline
-    tank capacity and speed arguments. */
+/* Task 2 also Task 4 */
 
 
 public class Car {
@@ -18,6 +15,13 @@ public class Car {
         gasolineLevel = 0;
         this.typeName = typeName;
         targetSpeed = 0;
+    }
+
+    public Car(String typeName, double initialSpeed, double gasolineTankCapacity) { // Task_2
+        this.typeName = typeName;
+        speed = initialSpeed;
+        gasolineLevel = gasolineTankCapacity;
+
     }
 
     public boolean turnCruiseOn(int speed) {   // for Task_4 func tio turn Cruise On then adding the  target speed
