@@ -3,13 +3,13 @@ public class Television {
     private boolean isOn = false;
 
     public void pressOnOff() {
-        isOn = !isOn;  // إذا طافي يشغل، وإذا شغال يطفي
+        isOn = !isOn;  // if off, turnOn
     }
 
     public void nextChannel() {
         channel++;
         if (channel > 10) {
-            channel = 1;  // نرجع للقناة 1 إذا تجاوزنا 10
+            channel = 1;  // will be back to th first channel, after 10
         }
     }
 

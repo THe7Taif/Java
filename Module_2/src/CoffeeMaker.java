@@ -1,8 +1,8 @@
 public class CoffeeMaker {
 
     private boolean isOn = false;
-    private String coffeeType = "normal";  // قيمة ابتدائية
-    private int coffeeAmount = 10;         // قيمة ابتدائية
+    private String coffeeType;  //
+    private int coffeeAmount = 10;         //
 
     public void pressPower() {
         isOn = !isOn;

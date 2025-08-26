@@ -10,7 +10,7 @@ public class CoffeeMakerDriver {
         Scanner input = new Scanner(System.in);
 
         // Step2: getting input for the type by int number
-        System.out.print("Enter coffee maker type, press 1 for normal or 2 for espresso: ");
+        System.out.print("Enter coffee maker type, Press 1 for normal or Press 2 for espresso: ");
         int coffeeType = input.nextInt();
 
         // the conditions for the choice
