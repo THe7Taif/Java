@@ -5,7 +5,7 @@ interface Vehicle {
 }
 
 
-abstract class AbstractVehicle implements Vehicle {
+ abstract class AbstractVehicle implements Vehicle {
 
     protected String type;
     protected String fuel;

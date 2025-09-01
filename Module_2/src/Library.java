@@ -7,7 +7,7 @@ public class Library {
     // Task 1.4
     private ArrayList<Book> books = new ArrayList<>();
     private HashMap<String, Book> borrowedBooks = new HashMap<>(); // store borrowed books by title
-    ArrayList<User> users = new ArrayList<>();
+    private ArrayList<User> users = new ArrayList<>();
 
 
     // Task 1.5
