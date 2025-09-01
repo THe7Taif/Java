@@ -1,4 +1,11 @@
-abstract class AbstractVehicle{
+interface Vehicle {
+    void start();
+    void stop();
+    String getInfo();
+}
+
+
+abstract class AbstractVehicle implements Vehicle {
 
     protected String type;
     protected String fuel;
@@ -22,5 +29,5 @@ abstract class AbstractVehicle{
 
 
 
-    abstract String getInfo(); //  Each class will make @override method, to it own properties.
+    public abstract String getInfo(); //  Each class will make @override method, to it own properties.
 }
