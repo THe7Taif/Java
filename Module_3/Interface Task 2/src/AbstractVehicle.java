@@ -4,7 +4,6 @@ interface Vehicle {
     String getInfo();
 }
 
-
  abstract class AbstractVehicle implements Vehicle {
 
     protected String type;
