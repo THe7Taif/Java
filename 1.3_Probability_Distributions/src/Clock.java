@@ -4,7 +4,7 @@
 public class Clock {
 
     // Private static member to hold the unique instance
-    private static Clock instance;
+    private static Clock instance ; // making null for Task 6 requirement.
     private double time;
 
     // Private constructor to prevent instantiation from outside
