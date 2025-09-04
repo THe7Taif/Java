@@ -3,11 +3,12 @@ import java.util.ArrayList;
 public class ArrivalProcessTester {
     public static void main(String[] args) {
 
+        Clock clock = Clock.getInstance();
+        EventList eventList = new EventList();
         // sending the data to the ArrivalProcess() Constructor:
         ArrivalProcess arrival = new ArrivalProcess("CustomerArrival", 0.5);
 
-        EventList eventList = new EventList();
-        Clock clock = Clock.getInstance();
+
 
         System.out.println("Initial Clock Time: " + clock.getTime());
 
