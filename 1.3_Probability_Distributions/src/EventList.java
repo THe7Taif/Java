@@ -8,6 +8,12 @@ class EventList {
         events.add(e);
     }
 
+
+    // Getter to retrieve all events
+    public ArrayList<Event> getEvents() {
+        return events;
+    }
+
     // Print all events
     public void printEvents() {
         for (Event e : events) {

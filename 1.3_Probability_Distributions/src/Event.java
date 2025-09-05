@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.Random;
-
-// Event class
 class Event {
     String eventType;
     double eventTime;
