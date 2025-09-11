@@ -1,4 +1,4 @@
-
+/*
 class A extends Thread {
     public void run() {
         for (int i = 1; i <= 20; i++) {
@@ -8,7 +8,6 @@ class A extends Thread {
         }
     }
 }
-
 class B extends Thread {
     public void run() {
         for (int i = 1; i <= 20; i++) {
@@ -18,8 +17,6 @@ class B extends Thread {
         }
     }
 }
-
-
 public class Main {
     public static void main(String[] args) {
         try {
@@ -40,29 +37,42 @@ public class Main {
 
     }
 }
+*/
+
+// Version_2: Advance code with fewer classes and same output, Runnable interface.
+public class Main {
+    public static void main(String[] args) {
+        try {
+
+            Runnable objOdd = () -> {
+                for (int i = 1; i <= 20; i++) {
+                    if (i % 2 != 0) {
+                        System.out.println("Odd Thread: " + i);
+                    }
+                }
+            };
+
+            Runnable objEven = () -> {
+                for (int i = 1; i <= 20; i++) {
+                    if (i % 2 == 0) {
+                        System.out.println("Even Thread: " + i);
+                    }
+                }
+            };
 
 
+            Thread threadEven = new Thread(objEven);
+            threadEven.start();    // start() method is used to start the thread by calling the run() method
+            threadEven.join();     // join() method is used to wait for a thread to die. In other words, it makes the current thread to pause execution until the thread it joins with completes its execution.
 
-/*
-class OddOrEven extends Thread {
-    public void run() {
-        for (int i = 1; i <= 20; i++) {
-            if (i % 2 != 0) {
-                System.out.println("Odd Thread: " + i);
-            } else {
-                System.out.println("Even Thread: " + i);
-            }
+            Thread threadOdd = new Thread(objOdd);
+            threadOdd.start();
+            threadOdd.join(); // wait for odd thread to finish
+
+            System.out.println("Printing complete.");
+
+        } catch(Exception e){
+            System.out.println(e);
         }
     }
 }
-public class Main extends Thread  {
-    public static void main(String[] args) {
-
-        OddOrEven obj = new OddOrEven();
-        obj.start();
-
-
-    }
-}
-*/
-
