@@ -1,78 +1,64 @@
-/*
-class A extends Thread {
+import java.util.Random;
+
+class SumThread extends Thread {
+    private int[] numbers;
+    private int start;
+    private int end;
+    public long partialSum; // each thread stores its partial sum here
+
+    public SumThread(int[] numbers, int start, int end) {
+        this.numbers = numbers;
+        this.start = start;
+        this.end = end;
+    }
+
+    @Override
     public void run() {
-        for (int i = 1; i <= 20; i++) {
-            if (i % 2 != 0) {
-                System.out.println("Odd Thread: " + i);
-            }
+        partialSum = 0;
+        for (int i = start; i < end; i++) {
+            partialSum += numbers[i];
         }
     }
 }
-class B extends Thread {
-    public void run() {
-        for (int i = 1; i <= 20; i++) {
-            if (i % 2 == 0) {
-                System.out.println("Even Thread: " + i);
-            }
-        }
-    }
-}
+
 public class Main {
     public static void main(String[] args) {
-        try {
-            A objOdd = new A();
-            B objEven = new B();
+        int size = 100000;
+        int[] numbers = new int[size];
 
-            objEven.start();    // start() method is used to start the thread by calling the run() method
-            objEven.join();     // join() method is used to wait for a thread to die. In other words, it makes the current thread to pause execution until the thread it joins with completes its execution.
-
-            objOdd.start();
-            objOdd.join();
-
-            System.out.println("Printing complete.");
-
-        } catch(Exception e){
-            System.out.println(e);
+        // 1️⃣ create array with random numbers
+        Random rand = new Random();
+        for (int i = 0; i < size; i++) {
+            numbers[i] = rand.nextInt(100); // أرقام من 0 إلى 99
         }
 
-    }
-}
-*/
+        // 2️⃣ know number of CPU cores
+        int cores = Runtime.getRuntime().availableProcessors();
+        System.out.println("Available CPU cores: " + cores);
 
-// Version_2: Advance code with fewer classes and same output, Runnable interface.
-public class Main {
-    public static void main(String[] args) {
-        try {
+        int chunkSize = size / cores;
+        SumThread[] threads = new SumThread[cores];
 
-            Runnable objOdd = () -> {
-                for (int i = 1; i <= 20; i++) {
-                    if (i % 2 != 0) {
-                        System.out.println("Odd Thread: " + i);
-                    }
-                }
-            };
-
-            Runnable objEven = () -> {
-                for (int i = 1; i <= 20; i++) {
-                    if (i % 2 == 0) {
-                        System.out.println("Even Thread: " + i);
-                    }
-                }
-            };
-
-
-            Thread threadEven = new Thread(objEven);
-            threadEven.start();    // start() method is used to start the thread by calling the run() method
-            threadEven.join();     // join() method is used to wait for a thread to die. In other words, it makes the current thread to pause execution until the thread it joins with completes its execution.
-
-            Thread threadOdd = new Thread(objOdd);
-            threadOdd.start();
-            threadOdd.join(); // wait for odd thread to finish
-
-            System.out.println("Printing complete.");
-
-        } catch(Exception e){
-            System.out.println(e);
+        // 3️⃣ create and start threads to calculate partial sums of the array in parallel.
+        for (int i = 0; i < cores; i++) {
+            int start = i * chunkSize;
+            int end = (i == cores - 1) ? size : start + chunkSize; // آخر Thread ياخذ الباقي
+            threads[i] = new SumThread(numbers, start, end);
+            threads[i].start();
         }
+
+        // 4️⃣ wait for all threads to finish and combine their results.
+        long totalSum = 0;
+        try {
+            for (int i = 0; i < cores; i++) {
+                threads[i].join(); // wait for thread to finish
+                totalSum += threads[i].partialSum; // add partial sum to total sum.
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // 5️⃣ print the total sum.
+        System.out.println("Total sum: " + totalSum);
     }
 }
