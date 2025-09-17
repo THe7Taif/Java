@@ -19,7 +19,6 @@ public class ThreadSafe {
         list.remove(index);
     }
 
-
     public class TestThreadSafe {
         public static void main(String[] args) {
             ThreadSafe list = new ThreadSafe();
